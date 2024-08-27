@@ -12,7 +12,7 @@
                 </v-col>
             </v-row>
             <v-row>
-                <v-col>
+                <v-col class="mb-2">
                     <v-text-field v-model="selectedRua" variant="outlined" label="Rua/Logradouro" id="rua" name="rua"
                         required></v-text-field>
                 </v-col>
@@ -94,9 +94,10 @@ export default {
                     .then((response) => {
                         response.json().then(data => {
                             this.ruasInfo = data
-                            console.log(this.ruasInfo)
+                            //console.log(this.ruasInfo)
                             if (data.length == 0) {
                                 alert('Nenhuma informação encontrada, tente novamente!')
+                                rua.focus()
                             }
                             else {
                                 this.t1Display = 'block'
@@ -111,6 +112,7 @@ export default {
             this.selectedRua = null
             this.ruasInfo = []
             this.mapUrl = 'https://www.google.com/maps/place/'
+            rua.focus()
             console.clear()
         },
     },
