@@ -17,11 +17,13 @@
     <v-footer>
       <v-row justify="center" no-gutters>
         <v-col class="text-center" cols="12">
-      <p>
-      &copy;{{ new Date().getFullYear() }} <a href="https://zapwebsites.com.br" class="text-decoration-none" rel="norefferer" target="_blank">Zapwebsites</a>
-      </p>
-  </v-col>
-    </v-row>
+          <p>
+            &copy;{{ new Date().getFullYear() }} <a href="https://zapwebsites.com.br" class="text-decoration-none"
+              rel="norefferer" target="_blank">Zapwebsites</a>
+            <v-btn href="https://github.com/zapsys/busca-logradouro-cep" icon="mdi-github" class="mx-4 float-end" variant="text" role="link" target="_blank"></v-btn>
+          </p>
+        </v-col>
+      </v-row>
     </v-footer>
   </v-app>
 </template>
@@ -41,7 +43,6 @@ import Form2 from './components/Form2.vue'
 
 export default {
   name: 'BuscaLogradouro',
-
   components: {
     Form1, Form2
   },
