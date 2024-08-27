@@ -1,24 +1,37 @@
-# lamp-switch
+# Sistema para busca de informações de Logradouro/Rua ou busca por CEP
+Sistema desenvolvido com uso dos frameworks [Vue 3.0](https://vuejs.org/guide/introduction.html) e [Vuetify Component](https://vuetifyjs.com/en/getting-started/installation/) para busca de informações de logradouro/rua de qualquer estado/cidade do país.
+Possibilidade de busca de informações a partir do CEP.
+
+## Project dependencies
+- Linux, Windows or Mac machine with node.js, npm or another package manager (yarn, pnpm, etc)
+- Web browser
+- An IDE of your choice (VSCode, Sublime, Atom, etc)
+
+## Download
+No terminal clone o projeto:
+```
+git clone https://github.com/zapsys/busca-logradouro-cep.git
+```
 
 ## Project setup
+Entre na pasta do projeto e execute o commando para instalar as dependências
+```
+cd busca-logradouro-cep
+```
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Execute for development with hot-reload
 ```
-npm run serve
+npm run dev
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+Acesse a url http://localhost:5173 no navegador.
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## License
+Este projeto está sob a licença MIT, que permite o download, execução, alteração, redistribuição, tanto para uso privado como comercial do código fonte, desde que citado o autor. 
+
+[MIT License](LICENSE.md)

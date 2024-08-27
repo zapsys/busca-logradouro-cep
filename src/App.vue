@@ -1,26 +1,52 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <v-app :theme="theme">
+    <v-app-bar class="px-3">
+      <v-spacer></v-spacer>
+      <v-btn :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'" text="Tema" slim
+        @click="onClick"></v-btn>
+    </v-app-bar>
+    <v-main>
+      <v-container class="my-3">
+        <h1 class="fw-bold text-center my-3 text-light">Buscar informações de uma rua/logradouro</h1>
+        <Form1 />
+        <h1 class="fw-bold text-center my-3 text-light">Buscar informações de logradouro por CEP</h1>
+        <Form2 />
+        <Data2 />
+      </v-container>
+    </v-main>
+    <v-footer>
+      <v-row justify="center" no-gutters>
+        <v-col class="text-center" cols="12">
+      <p>
+      &copy;{{ new Date().getFullYear() }} <a href="https://zapwebsites.com.br" class="text-decoration-none" rel="norefferer" target="_blank">Zapwebsites</a>
+      </p>
+  </v-col>
+    </v-row>
+    </v-footer>
+  </v-app>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { ref } from 'vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+const theme = ref('light')
+
+function onClick() {
+  theme.value = theme.value === 'light' ? 'dark' : 'light'
 }
 </script>
+<script>
+import Form1 from './components/Form1.vue'
+import Form2 from './components/Form2.vue'
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+export default {
+  name: 'BuscaLogradouro',
+
+  components: {
+    Form1, Form2
+  },
+  data: () => ({
+    model: true,
+  }),
 }
-</style>
+</script>
