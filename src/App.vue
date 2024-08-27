@@ -18,9 +18,9 @@
       <v-row justify="center" no-gutters>
         <v-col class="text-center" cols="12">
           <p>
-            &copy;{{ new Date().getFullYear() }} <a href="https://zapwebsites.com.br" class="text-decoration-none"
+            &copy;{{ new Date().getFullYear() }} <a href="https://zapwebsites.com.br" class="text-decoration-none d-inline"
               rel="norefferer" target="_blank">Zapwebsites</a>
-            <v-btn href="https://github.com/zapsys/busca-logradouro-cep" icon="mdi-github" class="mx-4 float-end" variant="text" role="link" target="_blank"></v-btn>
+            <v-btn href="https://github.com/zapsys/busca-logradouro-cep" icon="mdi-github" class="mx-4 d-inline float-end" variant="text" role="link" target="_blank"></v-btn>
           </p>
         </v-col>
       </v-row>
