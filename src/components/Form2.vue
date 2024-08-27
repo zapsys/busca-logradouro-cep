@@ -1,10 +1,10 @@
 <template>
-    <v-form class="border-sm rounded-lg bg-light">
+    <v-form ref="cepForm" class="border-sm rounded-lg bg-light">
         <v-container>
             <v-row>
-                <v-col>
+                <v-col class="mb-2">
                     <v-text-field v-model="selectedCep" variant="outlined" id="cep" name="cep" label="CEP" type="text"
-                        maxlength="9" required></v-text-field>
+                        :rules="[rules.onlyNum]" maxlength="9" required></v-text-field>
                 </v-col>
             </v-row>
             <v-btn class="rounded-pill mr-3" color="primary" @click="pesquisaCep()">Pesquisar</v-btn>
@@ -15,7 +15,7 @@
 </template>
 <script>
 import Data2 from '@/components/Data2.vue'
-
+const numbers = /^[\d-]+$/
 export default {
     components: {
         Data2
@@ -24,10 +24,13 @@ export default {
         selectedCep: null,
         cepInfo: [],
         t2Display: 'none',
+        rules: {
+            onlyNum: value => numbers.test(value) || 'Usar CEP no formato 99999-999 ou apenas 8 dígitos!',
+        }
     }),
     methods: {
         pesquisaCep() {
-            let validaCep = /^[0-9]{8}$/
+            let validaCep = /^[0-9]{8,9}$/
             if (this.selectedCep == null) {
                 alert('Informe um CEP para pesquisar!')
                 cep.focus()
@@ -36,8 +39,15 @@ export default {
             //Verifica se campo cep possui valor informado
             if (this.selectedCep && this.selectedCep != null) {
                 let cepFormmated = this.selectedCep.replace(/-/g, '')
-                if (!validaCep.test(cepFormmated)) {
-                    alert('Formato de CEP inválido! Usar apenas números!')
+                if (cepFormmated.length === 9) {
+                    alert('CEP inexistente! Usar CEP no formato 99999-999 ou apenas 8 dígitos!')
+                    cep.focus()
+                    return false
+                }
+                else if (!validaCep.test(cepFormmated)) {
+                    alert('Formato inválido! CEP no formato 99999-999 ou apenas números!')
+                    this.selectedCep = ''
+                    cep.focus()
                     return false
                 }
                 fetch(`https://viacep.com.br/ws//${this.selectedCep}/json/`)
@@ -53,7 +63,7 @@ export default {
                                     'uf': null,
                                     'cep': null,
                                     'ibge': null,
-                                    'unidade':null,
+                                    'unidade': null,
                                     'gia': null,
                                     'ddd': null,
                                     'siafi': null
@@ -63,12 +73,18 @@ export default {
                                 this.cepInfo = Object.values(data).slice(0, 7)
                                 this.ibgeUrl = 'https://cidades.ibge.gov.br/brasil/' + data['uf'].toLowerCase() + '/' + data['localidade'].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ /g, '-')
                                 this.t2Display = 'block'
-                                console.log(this.cepInfo)
+                                //console.log(this.cepInfo)
                             }
                             else {
                                 alert('CEP não encontrado!')
+                                cep.focus()
                             }
                         })
+                    })
+                    .catch((err) => {
+                        alert('CEP com formato inválido!')
+                        cep.focus()
+                        //console.error(err)
                     })
             }
         },
@@ -77,6 +93,7 @@ export default {
             this.selectedCep = null
             this.ibgeUrl = null
             this.cepInfo = []
+            this.$refs.cepForm.resetValidation()
         },
     },
 }
