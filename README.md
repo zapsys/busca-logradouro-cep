@@ -22,14 +22,14 @@ cd busca-logradouro-cep
 npm install
 ```
 
-### Execute for development with hot-reload
+## Execute for development with hot-reload
 ```
 npm run dev
 ```
 Acesse a url http://localhost:5173 no navegador.
 
-### Demo
-[busca-logradouro-cep](https://busca-logradouro-cep.onrender.com/)
+## Demo
+[busca-logradouro-cep](https://busca-logradouro-cep.onrender.com/){:target="_blank"} 
 
 ## License
 Este projeto está sob a licença MIT, que permite o download, execução, alteração, redistribuição, tanto para uso privado como comercial do código fonte, desde que citado o autor. 
