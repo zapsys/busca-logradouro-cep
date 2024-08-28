@@ -1,5 +1,5 @@
 <template>
-    <v-form ref="form" class="border-sm rounded-lg">
+    <v-form ref="ruaForm" class="border-sm rounded-lg">
         <v-container>
             <v-row>
                 <v-col>
@@ -13,8 +13,8 @@
             </v-row>
             <v-row>
                 <v-col class="mb-2">
-                    <v-text-field v-model="selectedRua" variant="outlined" label="Rua/Logradouro" id="rua" name="rua"
-                        required></v-text-field>
+                    <v-text-field v-model="selectedRua" variant="outlined" label="Rua/Logradouro" id="rua" name="rua" :rules="[rules.minLen]"
+                        type="text" minlength="3" required></v-text-field>
                 </v-col>
             </v-row>
             <v-btn class="rounded-pill mr-3" color="primary" @click="pesquisaRua()">Pesquisar</v-btn>
@@ -41,6 +41,9 @@ export default {
         ruasInfo: [],
         estadoNome: null,
         mapUrl: 'https://www.google.com/maps/place/',
+        rules: {
+            minLen: value => value != null && value.length >= 3 || 'A pesquisa deve possuir no mínimo 3 caracteres',
+        }
     }),
     created() {
         this.getEstados()
@@ -88,7 +91,7 @@ export default {
                 return false
             }
             //Verifica se campo rua possui valor informado.
-            if (this.selectedRua && this.selectedRua != null) {
+            if (this.selectedRua != null && this.selectedRua.length >=3) {
                 this.selectedRua.replace(/ /g, '+')
                 fetch(`https://viacep.com.br/ws/${this.selectedUF}/${this.selectedCidade}/${this.selectedRua}/json/`)
                     .then((response) => {
@@ -104,6 +107,9 @@ export default {
                             }
                         })
                     })
+                    .catch((err) => {
+                        //console.error(err)
+                    })
             }
         },
         limpaTabela() {
@@ -111,8 +117,11 @@ export default {
             this.t1Display = 'none'
             this.selectedRua = null
             this.ruasInfo = []
+            if (this.selectedUF != null) {
+                rua.focus()
+            }
             this.mapUrl = 'https://www.google.com/maps/place/'
-            rua.focus()
+            this.$refs.ruaForm.resetValidation()
             console.clear()
         },
     },
