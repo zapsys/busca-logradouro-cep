@@ -1,5 +1,5 @@
 # Sistema para busca de informações de Logradouro/Rua ou busca por CEP
-Sistema desenvolvido com uso do [Vue 3.0](https://vuejs.org/guide/introduction.html), [Vite](https://vitejs.dev/) e [Vuetify Component](https://vuetifyjs.com/en/getting-started/) para busca de informações de logradouro/rua de qualquer estado/cidade do país.
+Sistema desenvolvido com uso do [Vue 3](https://vuejs.org/guide/introduction.html), [Vite](https://vitejs.dev/) e [Vuetify Component](https://vuetifyjs.com/en/getting-started/) para busca de informações de logradouro/rua de qualquer estado/cidade do país.
 Possibilidade de busca de informações a partir do CEP.
 
 ## Project dependencies
