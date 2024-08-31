@@ -4,17 +4,20 @@
             <v-row>
                 <v-col>
                     <v-select v-model="selectedUF" variant="outlined" id="uf" name="uf" label="Estado" placeholder="Estado"
-                        :items="estados" @update:model-value="getCidades()"></v-select>
+                        :items="estados" @update:model-value="getCidades()">
+                    </v-select>
                 </v-col>
                 <v-col>
                     <v-select v-model="selectedCidade" variant="outlined" id="cidades" name="cidades" label="Cidade"
-                        placeholder="Cidade" :items="cidades"></v-select>
+                        placeholder="Cidade" :items="cidades">
+                    </v-select>
                 </v-col>
             </v-row>
             <v-row>
                 <v-col class="mb-2">
                     <v-text-field v-model="selectedRua" variant="outlined" label="Rua/Logradouro" id="rua" name="rua" :rules="[rules.minLen]"
-                        type="text" minlength="3" required></v-text-field>
+                        type="text" minlength="3" required>
+                    </v-text-field>
                 </v-col>
             </v-row>
             <v-btn class="rounded-pill mr-3" color="primary" @click="pesquisaRua()">Pesquisar</v-btn>
