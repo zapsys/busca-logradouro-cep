@@ -1,5 +1,5 @@
 # Sistema para busca de informações de Logradouro/Rua ou busca por CEP
-Sistema desenvolvido com uso dos frameworks [Vue 3.0](https://vuejs.org/guide/introduction.html) e [Vuetify Component](https://vuetifyjs.com/en/getting-started/installation/) para busca de informações de logradouro/rua de qualquer estado/cidade do país.
+Sistema desenvolvido com uso do [Vue 3.0](https://vuejs.org/guide/introduction.html), [Vite](https://vitejs.dev/) e [Vuetify Component](https://vuetifyjs.com/en/getting-started/) para busca de informações de logradouro/rua de qualquer estado/cidade do país.
 Possibilidade de busca de informações a partir do CEP.
 
 ## Project dependencies
@@ -28,8 +28,19 @@ npm run dev
 ```
 Acesse a url http://localhost:5173 no navegador.
 
+## Build for production
+```
+npm run build
+```
+Então execute:
+```
+npm run serve
+```
+
+Acesse a url http://localhost:4173 no navegador.
+
 ## Demo
-[busca-logradouro-cep](https://busca-logradouro-cep.onrender.com/)
+[busca-logradouro-cep](https://zapsys.github.io/busca-logradouro-cep/)
 
 ## License
 Este projeto está sob a licença MIT, que permite o download, execução, alteração, redistribuição, tanto para uso privado como comercial do código fonte, desde que citado o autor. 
