@@ -40,7 +40,7 @@ npm run serve
 Acesse a url http://localhost:4173 no navegador.
 
 ## Demo
-[busca-logradouro-cep](https://busca-logradouro-cep.onrender.com/)
+[busca-logradouro-cep](https://busca-logradouro-cep.vercel.app/)
 
 ## License
 Este projeto está sob a licença MIT, que permite o download, execução, alteração, redistribuição, tanto para uso privado como comercial do código fonte, desde que citado o autor. 
