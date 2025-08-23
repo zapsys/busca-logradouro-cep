@@ -29,9 +29,22 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 
 const theme = ref('light')
+
+// Load theme from localStorage on mount
+onMounted(() => {
+  const savedTheme = localStorage.getItem('theme')
+  if (savedTheme === 'dark' || savedTheme === 'light') {
+    theme.value = savedTheme
+  }
+})
+
+// Watch for theme changes and persist to localStorage
+watch(theme, (val) => {
+  localStorage.setItem('theme', val)
+})
 
 function onClick() {
   theme.value = theme.value === 'light' ? 'dark' : 'light'
